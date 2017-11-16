@@ -8,8 +8,6 @@ if (!window.PaymentRequest) {
     supportedMethods: ['basic-card']
   }];
 
-  // Shipping Options step 1
-  /*
   var STANDARD_SHIPPING_PRICE = 2.0;
   var SDC_SHIPPING_PRICE = 3.0;
   
@@ -30,7 +28,6 @@ if (!window.PaymentRequest) {
       value: SDC_SHIPPING_PRICE,
     },
   };
-  */
 
   // Respond to clicking a 'Buy Now' button
   function onClickBuyNow(button, name, price) {
@@ -46,27 +43,20 @@ if (!window.PaymentRequest) {
         label: 'Total', 
         amount: {currency: 'USD', value: price}
       },
-      // Shipping Options step 2
-      //shippingOptions: [shippingOptionStandard]
+      shippingOptions: [shippingOptionStandard]
     };
 
-    // Requesting Customer Details step 1
-    /*
     var options = {
       requestPayerName: true,
       requestPayerEmail: true,
       requestPayerPhone: true,
       requestShipping: true
     };
-    */
-
+    
     // This sets up a 'Payment Request' with the payment methods we will allow and the details of this purchase
-    // Requesting Customer Details step 2: add options as a 3rd parameter
-    var paymentRequest = new PaymentRequest(paymentMethods, purchaseDetails);
+    var paymentRequest = new PaymentRequest(paymentMethods, purchaseDetails, options);
     
     // This makes it actually display the user interface
-    // Payment Request UI step 1
-    /*
     paymentRequest.show()
       // This next bit happens once we have entered our details and confirmed. `paymentResponse` will contain the data we entered.
       .then(function(paymentResponse) {
@@ -85,10 +75,7 @@ if (!window.PaymentRequest) {
         // This might happen for example if you click the 'cancel' button.
         console.error('Unable to complete purchase', error);
       });
-    */
 
-    // Shipping Options step 3
-    /*
     paymentRequest.addEventListener('shippingaddresschange', function(event) {  
       
       var postalCode = event.target.shippingAddress.postalCode;
@@ -101,10 +88,7 @@ if (!window.PaymentRequest) {
       event.updateWith(purchaseDetails);
       
     });
-    */
     
-    // Shipping Options step 4
-    /*
     paymentRequest.addEventListener('shippingoptionchange', function(event) {
      
       console.log('shipping option change', paymentRequest.shippingOption);
@@ -127,8 +111,7 @@ if (!window.PaymentRequest) {
       event.updateWith(purchaseDetails);
       
     });
-    */
-
+    
   }
 
   /**
