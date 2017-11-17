@@ -66,9 +66,9 @@ if (!window.PaymentRequest) {
           .then(function(paymentResponse) {
             // We successfully processed the payment, so now we can call 'complete' to indicate it was successful and close the dialog.
             paymentResponse.complete('success');
-            // For this demo we will also update the button
-            button.innerHTML = 'Purchased';
-            button.classList.add('purchased');
+            // For this demo we will also update the page
+            document.getElementsByClassName('purchased')[0].style.display = 'block';
+            document.getElementsByClassName('products')[0].style.display = 'none';
           });
       })
       .catch(function(error) {
