@@ -80,14 +80,15 @@ button {
 }
 
 .buy-now {
-	width: 43%;
+	width: 40%;
   background-color: #987fff;
 }
 
 .add-basket {
-	width: 48%;
+	width: 50%;
 	background-color: #d285c6;
-	margin-right: 10px;
+	margin-right: 2px;
+	white-space: nowrap;
 }
 
 .purchased {
